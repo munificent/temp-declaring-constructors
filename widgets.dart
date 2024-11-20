@@ -1,15 +1,11 @@
 // aleksanderwozniak-deer/lib/presentation/screen/todo_list/todo_list_actions.dart:28
 class FilterBy {
-  final String filter;
-
-  const FilterBy({required this.filter}) : assert(filter != null);
+  const this({required final String filter}) : assert(filter != null);
 }
 
 // CodeNextGen-youtube_redesign/lib/screens/detail_page.dart:136
 class DetailsTab extends StatelessWidget {
-  const DetailsTab({super.key, required this.widget});
-
-  final DetailPage widget;
+  const this({super.key, required final DetailPage widget});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +27,7 @@ class GameTimeDto {
 
 // Livinglist-Manji/lib/ui/kanji_recognize_page/kanji_recognize_page.dart:12
 class DrawingPainter extends CustomPainter {
-  DrawingPainter({this.offsetPoints});
-  List<Offset> offsetPoints;
+  this({var List<Offset> offsetPoints});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -53,20 +48,20 @@ class DrawingPainter extends CustomPainter {
 /// not have to be built until they are displayed.
 class ListWheelChildBuilderDelegate extends ListWheelChildDelegate {
   /// Constructs the delegate from a builder callback.
-  ListWheelChildBuilderDelegate({required this.builder, this.childCount});
+  this({
+    /// Called lazily to build children.
+    required final NullableIndexedWidgetBuilder builder,
 
-  /// Called lazily to build children.
-  final NullableIndexedWidgetBuilder builder;
-
-  /// {@template flutter.widgets.ListWheelChildBuilderDelegate.childCount}
-  /// If non-null, [childCount] is the maximum number of children that can be
-  /// provided, and children are available from 0 to [childCount] - 1.
-  ///
-  /// If null, then the lower and upper limit are not known. However the [builder]
-  /// must provide children for a contiguous segment. If the builder returns null
-  /// at some index, the segment terminates there.
-  /// {@endtemplate}
-  final int? childCount;
+    /// {@template flutter.widgets.ListWheelChildBuilderDelegate.childCount}
+    /// If non-null, [childCount] is the maximum number of children that can be
+    /// provided, and children are available from 0 to [childCount] - 1.
+    ///
+    /// If null, then the lower and upper limit are not known. However the [builder]
+    /// must provide children for a contiguous segment. If the builder returns null
+    /// at some index, the segment terminates there.
+    /// {@endtemplate}
+    final int? childCount,
+  });
 
   @override
   int? get estimatedChildCount => childCount;
@@ -84,11 +79,11 @@ class ListWheelChildBuilderDelegate extends ListWheelChildDelegate {
 
 // GetStream-stream-chat-flutter/packages/stream_chat_flutter/example/lib/tutorial_part_1.dart:58
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.client, required this.channel});
-
-  final StreamChatClient client;
-
-  final Channel channel;
+  const this({
+    super.key,
+    required final StreamChatClient client,
+    required final Channel channel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +93,7 @@ class MyApp extends StatelessWidget {
 
 // vipulasri-Serene/lib/blocs/playing_bloc.dart:9
 class PlayingSoundsBloc extends Bloc<PlayingSoundsEvent, Result> {
-  final DataRepository repository;
-
-  PlayingSoundsBloc({required this.repository});
+  this({required final DataRepository repository});
 
   @override
   Result get initialState => Empty();
@@ -135,9 +128,10 @@ class PlayingSoundsBloc extends Bloc<PlayingSoundsEvent, Result> {
 
 // sterrenburg-flutterhole/lib/features/home/presentation/pages/summary/widgets/total_queries_over_day_tile.dart:9
 class TotalQueriesOverDayTile extends StatelessWidget {
-  const TotalQueriesOverDayTile(this.queriesOverTimeResult, {super.key});
-
-  final Either<Failure, OverTimeData> queriesOverTimeResult;
+  const this(
+    final Either<Failure, OverTimeData> queriesOverTimeResult, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -147,26 +141,17 @@ class TotalQueriesOverDayTile extends StatelessWidget {
 
 // jameskokoska-Allowance/budget_simple/lib/widgets/dropdown_select.dart:4
 class DropdownSelect extends StatefulWidget {
-  final String initial;
-  final List<String> items;
-  final Function(String) onChanged;
-  final Color? backgroundColor;
-  final bool compact;
-  //Check if the initial value not in list, default to using the first index
-  final bool checkInitialValue;
-  final String Function(dynamic) getLabel;
-  final bool translate;
-
-  const DropdownSelect({
+  const this({
     super.key,
-    required this.initial,
-    required this.items,
-    required this.onChanged,
-    this.backgroundColor,
-    this.compact = false,
-    this.checkInitialValue = false,
-    required this.getLabel,
-    this.translate = true,
+    required final String initial,
+    required final List<String> items,
+    required final Function(String) onChanged,
+    final Color? backgroundColor,
+    final bool compact = false,
+    //Check if the initial value not in list, default to using the first index
+    final bool checkInitialValue = false,
+    required final String Function(dynamic) getLabel,
+    final bool translate = true,
   });
 
   @override
@@ -175,21 +160,18 @@ class DropdownSelect extends StatefulWidget {
 
 // cross-solutions-smart-notes/src/app/lib/models/tags/tag_transaction_result.dart:4
 class TagTransactionResult {
-  TagTransactionResult(this.transactionType, this.tag);
-
-  final TagTransactionResultType transactionType;
-  final TagItemModel tag;
+  this(
+    final TagTransactionResultType transactionType,
+    final TagItemModel tag,
+  );
 }
 
 // lrorpilla-jidoujisho/chisa/lib/util/search_text_selection_controls.dart:149
 class TextSelectionToolbarItemData {
-  const TextSelectionToolbarItemData({
-    required this.label,
-    required this.onPressed,
+  const this({
+    required final String label,
+    required final VoidCallback onPressed,
   });
-
-  final String label;
-  final VoidCallback onPressed;
 }
 
 // stonega-tsacdop/lib/intro_slider/fourthpage.dart:5
@@ -209,9 +191,7 @@ class FourthPage extends StatefulWidget {
 /// tests. However, now that tests rely on the [FakeProcessManager] this
 /// abstraction is redundant.
 class Git {
-  const Git(this.processManager);
-
-  final ProcessManager processManager;
+  const this(final ProcessManager processManager);
 
   Future<String> getOutput(
     List<String> args,
@@ -247,19 +227,12 @@ class Git {
 
 // lrorpilla-jidoujisho/legacy/lib/main.dart:3906
 class ClipboardHistoryItem extends StatefulWidget {
-  final DictionaryHistoryEntry entry;
-  final CreatorCallback creatorCallback;
-  final VoidCallback stateCallback;
-
-  final ScrollController dictionaryScroller;
-  final ValueNotifier<double> dictionaryScrollOffset;
-
-  ClipboardHistoryItem(
-    this.entry,
-    this.creatorCallback,
-    this.stateCallback,
-    this.dictionaryScroller,
-    this.dictionaryScrollOffset,
+  this(
+    final DictionaryHistoryEntry entry,
+    final CreatorCallback creatorCallback,
+    final VoidCallback stateCallback,
+    final ScrollController dictionaryScroller,
+    final ValueNotifier<double> dictionaryScrollOffset,
   );
 
   @override
@@ -270,26 +243,19 @@ class ClipboardHistoryItem extends StatefulWidget {
 
 // LittleLightForDestiny-littlelight/lib/shared/widgets/objectives/multi_objective_progress.widget.dart:8
 class _ObjectiveProgress {
-  final int completionValue;
-  final int currentProgress;
-  final double percentComplete;
-
-  _ObjectiveProgress(
-    this.completionValue,
-    this.currentProgress,
-    this.percentComplete,
+  this(
+    final int completionValue,
+    final int currentProgress,
+    final double percentComplete,
   );
 }
 
 // openfoodfacts-smooth-app/packages/smooth_app/lib/widgets/smooth_product_carousel.dart:31
 class SmoothProductCarousel extends StatefulWidget {
-  const SmoothProductCarousel({
-    this.containSearchCard = false,
-    this.onPageChangedTo,
+  const this({
+    final bool containSearchCard = false,
+    final Function(int page, String? productBarcode)? onPageChangedTo,
   });
-
-  final bool containSearchCard;
-  final Function(int page, String? productBarcode)? onPageChangedTo;
 
   @override
   State<SmoothProductCarousel> createState() => _SmoothProductCarouselState();
@@ -298,24 +264,19 @@ class SmoothProductCarousel extends StatefulWidget {
 // benibete-info_covid-19/lib/ui/screens/home/components/card_home_slider_indicator.dart:4
 /// An indicator showing the currently selected page of a PageController
 class CardHomeSliderIndicator extends AnimatedWidget {
-  CardHomeSliderIndicator({
-    this.controller,
-    this.itemCount,
-    this.onPageSelected,
-    this.color = Colors.white,
+  this({
+    /// The PageController for the indicator.
+    final PageController controller,
+
+    /// The number of items managed by the PageController
+    final int itemCount,
+
+    /// Called when a dot is tapped
+    final ValueChanged<int> onPageSelected,
+
+    /// The color of the indicator.
+    final Color color = Colors.white,
   }) : super(listenable: controller);
-
-  /// The PageController for the indicator.
-  final PageController controller;
-
-  /// The number of items managed by the PageController
-  final int itemCount;
-
-  /// Called when a dot is tapped
-  final ValueChanged<int> onPageSelected;
-
-  /// The color of the indicator.
-  final Color color;
 
   Widget _buildLineIndicator(int index) {
     // ...
@@ -328,29 +289,20 @@ class CardHomeSliderIndicator extends AnimatedWidget {
 
 // invoiceninja-admin-portal/lib/ui/document/view/document_view_vm.dart:45
 class DocumentViewVM {
-  DocumentViewVM({
-    required this.state,
-    required this.document,
-    required this.company,
-    required this.onEntityAction,
-    required this.onRefreshed,
-    required this.isSaving,
-    required this.isLoading,
-    required this.isDirty,
+  this({
+    required final AppState state,
+    required final DocumentEntity document,
+    required final CompanyEntity? company,
+    required final Function(BuildContext, EntityAction) onEntityAction,
+    required final Function(BuildContext) onRefreshed,
+    required final bool isSaving,
+    required final bool isLoading,
+    required final bool isDirty,
   });
 
   factory DocumentViewVM.fromStore(Store<AppState> store) {
     // ...
   }
-
-  final AppState state;
-  final DocumentEntity document;
-  final CompanyEntity? company;
-  final Function(BuildContext, EntityAction) onEntityAction;
-  final Function(BuildContext) onRefreshed;
-  final bool isSaving;
-  final bool isLoading;
-  final bool isDirty;
 }
 
 // flutter-flutter/packages/flutter/lib/src/widgets/basic.dart:1836
@@ -383,10 +335,13 @@ class DocumentViewVM {
 ///  * The [catalog of layout widgets](https://flutter.dev/widgets/layout/).
 class RotatedBox extends SingleChildRenderObjectWidget {
   /// A widget that rotates its child.
-  const RotatedBox({super.key, required this.quarterTurns, super.child});
+  const this({
+    super.key,
+    /// The number of clockwise quarter turns the child should be rotated.
+    required final int quarterTurns,
+    super.child,
+  });
 
-  /// The number of clockwise quarter turns the child should be rotated.
-  final int quarterTurns;
 
   @override
   RenderRotatedBox createRenderObject(BuildContext context) {
@@ -405,9 +360,7 @@ class ProjectDetailsPage extends StatefulWidget {
     // ...
   }
 
-  final Project project;
-
-  const ProjectDetailsPage({super.key, this.project});
+  const this({super.key, final Project project});
 
   @override
   _ProjectDetailsPageState createState() => _ProjectDetailsPageState();
@@ -420,7 +373,7 @@ class ProjectDetailsPage extends StatefulWidget {
 /// Name the classes appropriately for the example (don't leave it as
 /// "PlaceholderExample"!).
 class PlaceholderExample extends StatelessWidget {
-  const PlaceholderExample({super.key});
+  const this({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -430,12 +383,11 @@ class PlaceholderExample extends StatelessWidget {
 
 // jeremySrgt-bringme/lib/delivery/vignette/folable_card_details.dart:7
 class FolableCardDetails extends StatelessWidget {
-  final DocumentSnapshot demandData;
   final TextStyle titleTextStyle = TextStyle(elided);
   final TextStyle contentTextStyle = TextStyle(elided);
   final TextStyle descStyle = TextStyle(elided);
 
-  FolableCardDetails({required this.demandData});
+  this({required final DocumentSnapshot demandData});
 
   @override
   Widget build(BuildContext context) {
@@ -445,7 +397,7 @@ class FolableCardDetails extends StatelessWidget {
 
 // flutter-samples/provider_shopper/lib/main.dart:65
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const this({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -455,7 +407,7 @@ class MyApp extends StatelessWidget {
 
 // CaramelDunes-nyanya_rocket/lib/screens/multiplayer/setup_widgets/sign_up_prompt.dart:6
 class SignUpPrompt extends StatelessWidget {
-  const SignUpPrompt({super.key});
+  const this({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -466,10 +418,7 @@ class SignUpPrompt extends StatelessWidget {
 // marchelo-developers-life-flutter/lib/network/model/PostResponse.dart:6
 @JsonSerializable()
 class PostResponse {
-  List<PostItem> result;
-  int totalCount;
-
-  PostResponse({this.result, this.totalCount});
+  this({var List<PostItem> result, var int totalCount});
 
   factory PostResponse.fromJson(Map<String, dynamic> json) =>
       _$PostResponseFromJson(json);
@@ -484,8 +433,10 @@ class PostResponse {
 
 // AssistantSMS-App/lib/app.dart:16
 class AssistantSMS extends StatefulWidget {
-  final EnvironmentSettings _env;
-  const AssistantSMS(this._env, {super.key});
+  // This one is unusual in that the field has a private name. It works OK here
+  // because the parameter is positional, but would be a problem if the
+  // parameter was named.
+  const this(final EnvironmentSettings _env, {super.key});
 
   @override
   // ignore: no_logic_in_create_state
@@ -536,15 +487,51 @@ class AppPaginatedDataTable extends StatefulWidget {
   /// Themed by [DataTableTheme]. [DataTableThemeData.decoration] is ignored.
   /// To modify the border or background color of the [PaginatedDataTable], use
   /// [CardTheme], since a [Card] wraps the inner [DataTable].
-  AppPaginatedDataTable({
+  this({
     super.key,
-    this.header,
-    this.actions,
-    required this.columns,
-    this.sortColumnIndex,
-    this.sortAscending = true,
-    this.subtractOne = false,
-    this.onSelectAll,
+
+    /// The table card's optional header.
+    ///
+    /// This is typically a [Text] widget, but can also be a [Row] of
+    /// [TextButton]s. To show icon buttons at the top end side of the table with
+    /// a header, set the [actions] property.
+    ///
+    /// If items in the table are selectable, then, when the selection is not
+    /// empty, the header is replaced by a count of the selected items. The
+    /// [actions] are still visible when items are selected.
+    final Widget? header,
+
+    /// Icon buttons to show at the top end side of the table. The [header] must
+    /// not be null to show the actions.
+    ///
+    /// Typically, the exact actions included in this list will vary based on
+    /// whether any rows are selected or not.
+    ///
+    /// These should be size 24.0 with default padding (8.0).
+    final List<Widget>? actions,
+
+    /// The configuration and labels for the columns in the table.
+    required final List<DataColumn> columns,
+
+    /// The current primary sort key's column.
+    ///
+    /// See [DataTable.sortColumnIndex].
+    final int? sortColumnIndex,
+
+    /// Whether the column mentioned in [sortColumnIndex], if any, is sorted
+    /// in ascending order.
+    ///
+    /// See [DataTable.sortAscending].
+    final bool sortAscending = true,
+
+    final bool subtractOne = false,
+
+    /// Invoked when the user selects or unselects every row, using the
+    /// checkbox in the heading row.
+    ///
+    /// See [DataTable.onSelectAll].
+    final ValueSetter<bool?>? onSelectAll,
+
     @Deprecated(
       'Migrate to use dataRowMinHeight and dataRowMaxHeight instead. '
       'This feature was deprecated after v3.7.0-5.0.pre.',
@@ -552,27 +539,95 @@ class AppPaginatedDataTable extends StatefulWidget {
     double? dataRowHeight,
     double? dataRowMinHeight,
     double? dataRowMaxHeight,
-    this.headingRowHeight = 56.0,
-    this.horizontalMargin = 24.0,
-    this.columnSpacing = 56.0,
-    this.showCheckboxColumn = true,
-    this.showFirstLastButtons = false,
-    this.initialFirstRowIndex = 0,
-    this.onPageChanged,
-    this.rowsPerPage = defaultRowsPerPage,
-    this.availableRowsPerPage = const <int>[
+
+    /// The height of the heading row.
+    ///
+    /// This value is optional and defaults to 56.0 if not specified.
+    final double headingRowHeight = 56.0,
+
+    /// The horizontal margin between the edges of the table and the content
+    /// in the first and last cells of each row.
+    ///
+    /// When a checkbox is displayed, it is also the margin between the checkbox
+    /// the content in the first data column.
+    ///
+    /// This value defaults to 24.0 to adhere to the Material Design specifications.
+    ///
+    /// If [checkboxHorizontalMargin] is null, then [horizontalMargin] is also the
+    /// margin between the edge of the table and the checkbox, as well as the
+    /// margin between the checkbox and the content in the first data column.
+    final double horizontalMargin = 24.0,
+
+    /// The horizontal margin between the contents of each data column.
+    ///
+    /// This value defaults to 56.0 to adhere to the Material Design specifications.
+    final double columnSpacing = 56.0,
+
+    /// {@macro flutter.material.dataTable.showCheckboxColumn}
+    final bool showCheckboxColumn = true,
+
+    /// Flag to display the pagination buttons to go to the first and last pages.
+    final bool showFirstLastButtons = false,
+
+    /// The index of the first row to display when the widget is first created.
+    final int? initialFirstRowIndex = 0,
+
+    /// Invoked when the user switches to another page.
+    ///
+    /// The value is the index of the first row on the currently displayed page.
+    final ValueChanged<int>? onPageChanged,
+
+    /// The number of rows to show on each page.
+    ///
+    /// See also:
+    ///
+    ///  * [onRowsPerPageChanged]
+    ///  * [defaultRowsPerPage]
+    final int rowsPerPage = defaultRowsPerPage,
+
+    /// The options to offer for the rowsPerPage.
+    ///
+    /// The current [rowsPerPage] must be a value in this list.
+    ///
+    /// The values in this list should be sorted in ascending order.
+    final List<int> availableRowsPerPage = const <int>[
       defaultRowsPerPage,
       defaultRowsPerPage * 2,
       defaultRowsPerPage * 5,
       defaultRowsPerPage * 10,
     ],
-    this.onRowsPerPageChanged,
-    this.dragStartBehavior = DragStartBehavior.start,
-    this.arrowHeadColor,
-    required this.source,
-    this.checkboxHorizontalMargin,
-    this.controller,
-    this.primary,
+
+    /// Invoked when the user selects a different number of rows per page.
+    ///
+    /// If this is null, then the value given by [rowsPerPage] will be used
+    /// and no affordance will be provided to change the value.
+    final ValueChanged<int?>? onRowsPerPageChanged,
+
+    /// {@macro flutter.widgets.scrollable.dragStartBehavior}
+    final DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+
+    /// Defines the color of the arrow heads in the footer.
+    final Color? arrowHeadColor,
+
+    /// The data source which provides data to show in each row. Must be non-null.
+    ///
+    /// This object should generally have a lifetime longer than the
+    /// [PaginatedDataTable] widget itself; it should be reused each time the
+    /// [PaginatedDataTable] constructor is called.
+    required final DataTableSource source,
+
+    /// Horizontal margin around the checkbox, if it is displayed.
+    ///
+    /// If null, then [horizontalMargin] is used as the margin between the edge
+    /// of the table and the checkbox, as well as the margin between the checkbox
+    /// and the content in the first data column. This value defaults to 24.0.
+    final double? checkboxHorizontalMargin,
+
+    /// {@macro flutter.widgets.scroll_view.controller}
+    final ScrollController? controller,
+
+    /// {@macro flutter.widgets.scroll_view.primary}
+    final bool? primary,
   }) : assert(actions == null || (header != null)),
        assert(columns.isNotEmpty),
        assert(
@@ -606,46 +661,6 @@ class AppPaginatedDataTable extends StatefulWidget {
          'You cannot both set primary to true and pass an explicit controller.',
        );
 
-  /// The table card's optional header.
-  ///
-  /// This is typically a [Text] widget, but can also be a [Row] of
-  /// [TextButton]s. To show icon buttons at the top end side of the table with
-  /// a header, set the [actions] property.
-  ///
-  /// If items in the table are selectable, then, when the selection is not
-  /// empty, the header is replaced by a count of the selected items. The
-  /// [actions] are still visible when items are selected.
-  final Widget? header;
-
-  /// Icon buttons to show at the top end side of the table. The [header] must
-  /// not be null to show the actions.
-  ///
-  /// Typically, the exact actions included in this list will vary based on
-  /// whether any rows are selected or not.
-  ///
-  /// These should be size 24.0 with default padding (8.0).
-  final List<Widget>? actions;
-
-  /// The configuration and labels for the columns in the table.
-  final List<DataColumn> columns;
-
-  /// The current primary sort key's column.
-  ///
-  /// See [DataTable.sortColumnIndex].
-  final int? sortColumnIndex;
-
-  /// Whether the column mentioned in [sortColumnIndex], if any, is sorted
-  /// in ascending order.
-  ///
-  /// See [DataTable.sortAscending].
-  final bool sortAscending;
-
-  /// Invoked when the user selects or unselects every row, using the
-  /// checkbox in the heading row.
-  ///
-  /// See [DataTable.onSelectAll].
-  final ValueSetter<bool?>? onSelectAll;
-
   /// The height of each row (excluding the row that contains column headings).
   ///
   /// This value is optional and defaults to kMinInteractiveDimension if not
@@ -669,97 +684,11 @@ class AppPaginatedDataTable extends StatefulWidget {
   /// specified.
   final double dataRowMaxHeight;
 
-  /// The height of the heading row.
-  ///
-  /// This value is optional and defaults to 56.0 if not specified.
-  final double headingRowHeight;
-
-  /// The horizontal margin between the edges of the table and the content
-  /// in the first and last cells of each row.
-  ///
-  /// When a checkbox is displayed, it is also the margin between the checkbox
-  /// the content in the first data column.
-  ///
-  /// This value defaults to 24.0 to adhere to the Material Design specifications.
-  ///
-  /// If [checkboxHorizontalMargin] is null, then [horizontalMargin] is also the
-  /// margin between the edge of the table and the checkbox, as well as the
-  /// margin between the checkbox and the content in the first data column.
-  final double horizontalMargin;
-
-  /// The horizontal margin between the contents of each data column.
-  ///
-  /// This value defaults to 56.0 to adhere to the Material Design specifications.
-  final double columnSpacing;
-
-  /// {@macro flutter.material.dataTable.showCheckboxColumn}
-  final bool showCheckboxColumn;
-
-  /// Flag to display the pagination buttons to go to the first and last pages.
-  final bool showFirstLastButtons;
-
-  /// The index of the first row to display when the widget is first created.
-  final int? initialFirstRowIndex;
-
-  /// Invoked when the user switches to another page.
-  ///
-  /// The value is the index of the first row on the currently displayed page.
-  final ValueChanged<int>? onPageChanged;
-
-  /// The number of rows to show on each page.
-  ///
-  /// See also:
-  ///
-  ///  * [onRowsPerPageChanged]
-  ///  * [defaultRowsPerPage]
-  final int rowsPerPage;
-
   /// The default value for [rowsPerPage].
   ///
   /// Useful when initializing the field that will hold the current
   /// [rowsPerPage], when implemented [onRowsPerPageChanged].
   static const int defaultRowsPerPage = 10;
-
-  /// The options to offer for the rowsPerPage.
-  ///
-  /// The current [rowsPerPage] must be a value in this list.
-  ///
-  /// The values in this list should be sorted in ascending order.
-  final List<int> availableRowsPerPage;
-
-  /// Invoked when the user selects a different number of rows per page.
-  ///
-  /// If this is null, then the value given by [rowsPerPage] will be used
-  /// and no affordance will be provided to change the value.
-  final ValueChanged<int?>? onRowsPerPageChanged;
-
-  /// The data source which provides data to show in each row. Must be non-null.
-  ///
-  /// This object should generally have a lifetime longer than the
-  /// [PaginatedDataTable] widget itself; it should be reused each time the
-  /// [PaginatedDataTable] constructor is called.
-  final DataTableSource source;
-
-  /// {@macro flutter.widgets.scrollable.dragStartBehavior}
-  final DragStartBehavior dragStartBehavior;
-
-  /// Horizontal margin around the checkbox, if it is displayed.
-  ///
-  /// If null, then [horizontalMargin] is used as the margin between the edge
-  /// of the table and the checkbox, as well as the margin between the checkbox
-  /// and the content in the first data column. This value defaults to 24.0.
-  final double? checkboxHorizontalMargin;
-
-  /// Defines the color of the arrow heads in the footer.
-  final Color? arrowHeadColor;
-
-  /// {@macro flutter.widgets.scroll_view.controller}
-  final ScrollController? controller;
-
-  /// {@macro flutter.widgets.scroll_view.primary}
-  final bool? primary;
-
-  final bool subtractOne;
 
   @override
   AppPaginatedDataTableState createState() => AppPaginatedDataTableState();
@@ -767,7 +696,7 @@ class AppPaginatedDataTable extends StatefulWidget {
 
 // flutter-flutter/packages/flutter/lib/src/material/text_button.dart:472
 class _TextButtonWithIcon extends TextButton {
-  _TextButtonWithIcon({
+  this({
     super.key,
     required super.onPressed,
     super.onLongPress,
@@ -796,7 +725,7 @@ class _TextButtonWithIcon extends TextButton {
 /// Media type that encapsulates videos or music.
 class PlayerMediaType extends MediaType {
   /// Initialise this media type.
-  PlayerMediaType._privateConstructor()
+  this._privateConstructor()
     : super(
         uniqueKey: 'player_media_type',
         icon: Icons.video_library,
@@ -814,7 +743,7 @@ class PlayerMediaType extends MediaType {
 
 // GitJournal-GitJournal/lib/core/views/note_links_view.dart:28
 class NoteLinksView extends NotesMaterializedView<_LinksList> {
-  NoteLinksView({
+  this({
     required super.name,
     required super.computeFn,
     required super.repoId,
@@ -827,8 +756,6 @@ class NoteLinksView extends NotesMaterializedView<_LinksList> {
 
 // tommyxchow-frosty/lib/screens/settings/stores/user_store.dart:9
 abstract class UserStoreBase with Store {
-  final TwitchApi twitchApi;
-
   /// The current user's info.
   @readonly
   UserTwitch? _details;
@@ -839,7 +766,7 @@ abstract class UserStoreBase with Store {
 
   ReactionDisposer? _disposeReaction;
 
-  UserStoreBase({required this.twitchApi});
+  this({required final TwitchApi twitchApi});
 
   @action
   Future<void> init({required Map<String, String> headers}) async {
@@ -876,16 +803,12 @@ abstract class UserStoreBase with Store {
 
 // invoiceninja-admin-portal/lib/redux/payment/payment_actions.dart:77
 class LoadPayments {
-  LoadPayments({this.completer, this.page = 1});
-
-  final Completer? completer;
-  final int page;
+  this({final Completer? completer, final int page = 1});
 }
 
 // WillianKirsch-FlutterKnow/Cursos/web/flutter-folio/lib/styled_widgets/styled_tooltip.dart:42
 class _Arrow extends StatelessWidget {
-  const _Arrow(this.color, {super.key});
-  final Color color;
+  const this(final Color color, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -895,21 +818,14 @@ class _Arrow extends StatelessWidget {
 
 // walaafikre-flutter-ecommerce/lib/model/product.dart:1
 class Product {
-  int id;
-  String name;
-  String category;
-  String image;
-  double price;
-  bool isliked;
-  bool isSelected;
-  Product({
-    this.id,
-    this.name,
-    this.category,
-    this.price,
-    this.isliked,
-    this.isSelected = false,
-    this.image,
+  this({
+    var int id,
+    var String name,
+    var String category,
+    var String image,
+    var double price,
+    var bool isliked,
+    var bool isSelected = false,
   });
 }
 
@@ -918,17 +834,14 @@ class Product {
 /// using the Forvo audio enhancement.
 class ForvoAudioDialogPage extends BasePage {
   /// Create an instance of this page.
-  const ForvoAudioDialogPage({
-    required this.results,
-    required this.onSelect,
+  const this({
+    /// List of recordings.
+    required final List<ForvoResult> results,
+
+    /// The callback to be called when an example sentence has been picked.
+    required final Function(int) onSelect,
     super.key,
   });
-
-  /// List of recordings.
-  final List<ForvoResult> results;
-
-  /// The callback to be called when an example sentence has been picked.
-  final Function(int) onSelect;
 
   @override
   BasePageState createState() => _ForvoAudioDialogPageState();
@@ -936,7 +849,7 @@ class ForvoAudioDialogPage extends BasePage {
 
 // SatYu26-Portfolio-Code-Flutter/lib/widgets/navigation_bar/navbar_logo.dart:4
 class NavBarLogo extends StatelessWidget {
-  const NavBarLogo({super.key});
+  const this({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -946,7 +859,7 @@ class NavBarLogo extends StatelessWidget {
 
 // snap-hunt-snaphunt/lib/ui/multiplayer/room.dart:211
 class RoomBody extends StatelessWidget {
-  const RoomBody({super.key});
+  const this({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -956,18 +869,16 @@ class RoomBody extends StatelessWidget {
 
 // bananocoin-kalium_wallet_flutter/lib/bus/fcm_update_event.dart:3
 class FcmUpdateEvent implements Event {
-  final String token;
-
-  FcmUpdateEvent({this.token});
+  this({final String token});
 }
 
 // juniorise-spooky-mb/lib/providers/in_app_purchase_provider.dart:284
 class MessageModel {
-  final PurchaseStatus status;
-  final String? message;
-  final bool isError;
-
-  MessageModel(this.status, this.isError, this.message);
+  this(
+    final PurchaseStatus status,
+    final bool isError,
+    final String? message,
+  );
 
   MessageModel removeMessage() {
     // ...
@@ -977,33 +888,27 @@ class MessageModel {
 // Skyost-Beerstory/lib/pages/page.dart:9
 /// Represents an app page.
 abstract class Page<T extends RepositoryObject> extends ConsumerWidget {
-  /// The page icon.
-  final IconData icon;
-
-  /// The page title.
-  final String titleKey;
-
-  /// The empty message.
-  final String emptyMessageKey;
-
-  /// The actions.
-  final List<Widget> actions;
-
-  /// Whether to show the search box.
-  final bool searchBox;
-
-  /// Whether to order the list in reverse order.
-  final bool reverseOrder;
-
   /// Creates a new page instance.
-  const Page({
+  const this({
     super.key,
-    required this.icon,
-    required this.titleKey,
-    required this.emptyMessageKey,
-    required this.actions,
-    this.searchBox = true,
-    this.reverseOrder = false,
+
+    /// The page icon.
+    required final IconData icon,
+
+    /// The page title.
+    required final String titleKey,
+
+    /// The empty message.
+    required final String emptyMessageKey,
+
+    /// The actions.
+    required final List<Widget> actions,
+
+    /// Whether to show the search box.
+    final bool searchBox = true,
+
+    /// Whether to order the list in reverse order.
+    final bool reverseOrder = false,
   });
 
   /// Allows to watch the corresponding repository.
@@ -1020,9 +925,7 @@ abstract class Page<T extends RepositoryObject> extends ConsumerWidget {
 
 // david-legend-login_catalog/lib/screens/login_design_3/login_screen_3.dart:12
 class LoginScreen3 extends StatefulWidget {
-  LoginScreen3({this.themeBloc});
-
-  ThemeBloc? themeBloc;
+  this({var ThemeBloc? themeBloc});
 
   @override
   _LoginScreen3State createState() => _LoginScreen3State();
@@ -1030,9 +933,7 @@ class LoginScreen3 extends StatefulWidget {
 
 // invoiceninja-admin-portal/lib/redux/product/product_actions.dart:227
 class SortProducts implements PersistUI, PersistPrefs {
-  SortProducts(this.field);
-
-  final String field;
+  this(final String field);
 }
 
 // rho-cassiopeiae-the12thplayer/lib/feed/models/dto/team_feed_update_dto.dart:3
@@ -1049,13 +950,13 @@ class TeamFeedUpdateDto {
 
 // krispykalsi-pretend/app/lib/application/bloc/initial/deep_link/deep_link_bloc.dart:12
 class DeepLinkBloc extends Bloc<DeepLinkEvent, DeepLinkState> {
-  final Future<String?> Function() _getInitialUri;
-  final Stream<String?> _uriLinkStream;
+  // Could declare this field in constructor too if we automatically remove "_"
+  // in named parameters.
   final ImportTimetable _importTimetable;
 
-  DeepLinkBloc(
-    this._getInitialUri,
-    this._uriLinkStream, {
+  this(
+    final Future<String?> Function() _getInitialUri,
+    final Stream<String?> _uriLinkStream, {
     required ImportTimetable importTimetable,
   }) : _importTimetable = importTimetable,
        super(DeepLinkInitial());
@@ -1083,7 +984,7 @@ class DeepLinkBloc extends Bloc<DeepLinkEvent, DeepLinkState> {
 
 // ngocmanh1609-provider_usecase_example/lib/ui/screen/home/home_screen.dart:4
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const this({super.key});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -1091,14 +992,10 @@ class HomeScreen extends StatefulWidget {
 
 // LittleLightForDestiny-littlelight/lib/pages/initial/widgets/language.button.dart:5
 class LanguageButton extends StatelessWidget {
-  final LanguageInfo language;
-  final bool selected;
-  final Function onPressed;
-
-  const LanguageButton({
-    required this.language,
-    this.selected = false,
-    required this.onPressed,
+  const this({
+    required final LanguageInfo language,
+    final bool selected = false,
+    required final Function onPressed,
   });
 
   @override
@@ -1113,18 +1010,13 @@ class LanguageButton extends StatelessWidget {
 
 // Stmol-yoga_app_flutter/lib/widgets/scalable_button.dart:4
 class ScalableButton extends StatefulWidget {
-  const ScalableButton({
+  const this({
     super.key,
-    required this.onTapDown,
-    required this.onTapUp,
-    required this.onTapCancel,
-    required this.child,
+    required final VoidCallback onTapDown,
+    required final VoidCallback onTapUp,
+    required final VoidCallback onTapCancel,
+    required final Widget child,
   });
-
-  final Widget child;
-  final VoidCallback onTapDown;
-  final VoidCallback onTapUp;
-  final VoidCallback onTapCancel;
 
   @override
   _ScalableButtonState createState() => _ScalableButtonState();
